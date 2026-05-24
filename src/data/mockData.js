@@ -4,38 +4,38 @@
  * local geolocation indexing, and dynamic user engagement metrics.
  */
 
-// 1. Live Creator Drops Data (Flash Sales with Active Timers)
+// 2. Live Drops Data (Flash Sale Product Streams)
 export const mockDrops = [
-  { 
-    id: 'd1', 
-    title: 'Aesthetic Ceramic Rings', 
-    price: 18.00, 
-    time: '01:24:05', 
-    stock: 3, 
-    totalStock: 10, 
-    img: 'https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=600&q=80' 
+  {
+    id: 'd1',
+    title: 'Aesthetic Ceramic Rings',
+    price: 18,
+    time: '01:24:05',
+    stock: 3,
+    totalStock: 12,
+    img: 'https://images.unsplash.com/photo-1590736969955-71cb91d3176d?w=600&q=80'
   },
-  { 
-    id: 'd2', 
-    title: 'Hand-Poured Soy Coasters', 
-    price: 24.50, 
-    time: '03:05:12', 
-    stock: 7, 
-    totalStock: 12, 
-    img: 'https://images.unsplash.com/photo-1590736969955-71cb91d3176d?w=600&q=80' 
+  {
+    id: 'd2',
+    title: 'Hand-Poured Soy Coasters',
+    price: 24.5,
+    time: '03:05:12',
+    stock: 7,
+    totalStock: 20,
+    img: 'https://images.unsplash.com/photo-1565192647048-f997ded87950?w=400&q=80'
   },
-  { 
-    id: 'd3', 
-    title: 'Crochet Checkered Tote Bag', 
-    price: 39.99, 
-    time: '00:42:18', 
-    stock: 1, 
-    totalStock: 5, 
-    img: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600&q=80' 
+  {
+    id: 'd3',
+    title: 'Crochet Checkered Tote Bag',
+    price: 39.99,
+    time: '00:42:18',
+    stock: 1,
+    totalStock: 8,
+    img: 'https://images.unsplash.com/photo-1502945015378-59308f8cc345?w=600&q=80'
   }
 ];
 
-// 2. Nearby Creators Data (Hyper-local Geolocation Indexing)
+// 3. Nearby Creators Data (Hyper-local Geolocation Indexing)
 export const mockCreators = [
   { 
     id: 'c1', 
