@@ -1,0 +1,16 @@
+import React from 'react';
+import { mockTrending } from '../../data/mockData';
+import ProductCard from '../../components/ui/common/ProductCard';
+
+export default function TrendingProducts() {
+  return (
+    <section className="px-4 py-8 max-w-7xl mx-auto">
+      <h2 className="text-2xl md:text-3xl font-black text-black mb-6">🔥 Trending Products</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        {mockTrending.map(item => (
+          <ProductCard key={item.id} item={item} />
+        ))}
+      </div>
+    </section>
+  );
+}
