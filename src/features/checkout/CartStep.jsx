@@ -33,7 +33,7 @@ export default function CartStep({
                 <span className="text-xl font-black uppercase">Free Campus Meetup</span>
                 <span className="text-2xl">🤝</span>
               </div>
-              <p className="text-sm font-bold text-zinc-700">Coordinate directly with student creators for a safe hand-off right outside campus landmarks.</p>
+              <p className="text-xs font-bold text-zinc-600">Coordinate directly with student creators for a safe hand-off right outside campus landmarks.</p>
             </button>
 
             <button
@@ -59,10 +59,10 @@ export default function CartStep({
               <div className="flex-1 space-y-2 text-center sm:text-left">
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
                   <span className="bg-black text-white text-[11px] font-black uppercase px-3 py-1 rounded">#{item.aesthetic}</span>
-                  <span className="text-sm font-bold text-zinc-700">📍 {item.campus}</span>
+                  <span className="text-sm font-bold text-zinc-500">📍 {item.campus}</span>
                 </div>
                 <h4 className="font-black text-2xl text-black leading-snug">{item.title}</h4>
-                <p className="text-sm font-bold text-purple-700">Made by {item.creator.name} {item.creator.isVerified && '🎓'}</p>
+                <p className="text-xs font-bold text-purple-600">Made by {item.creator.name} {item.creator.isVerified && '🎓'}</p>
               </div>
 
               {/* Quantity Adjusters & Item Actions */}
@@ -76,9 +76,9 @@ export default function CartStep({
                   <span className="text-sm block font-black uppercase text-zinc-700">Total</span>
                   <span className="text-2xl font-black font-mono">${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
-                <div className="flex gap-3 text-sm font-black uppercase">
+                <div className="flex gap-3 text-xs font-black uppercase">
                   <button onClick={() => removeItem(item.id)} className="text-red-500 hover:underline">Remove</button>
-                  <span className="text-zinc-600">|</span>
+                  <span className="text-zinc-300">|</span>
                   <button onClick={() => alert('Saved to wishlist items bundle!')} className="text-purple-600 hover:underline">Save to Wishlist</button>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function CartStep({
 
           {/* Promo Input System */}
           <div className="space-y-3">
-            <label className="block text-base font-black uppercase text-zinc-700">Apply Student Coupon</label>
+            <label className="block text-sm font-black uppercase text-zinc-500">Apply Student Coupon</label>
             <div className="flex gap-3">
               <input
                 type="text"
@@ -130,9 +130,9 @@ export default function CartStep({
                 onChange={(e) => setPromoCode(e.target.value)}
                 className="flex-1 bg-zinc-50 border-2 border-black font-black px-4 py-3 rounded-2xl text-base outline-none uppercase"
               />
-              <button onClick={handleApplyPromo} className="bg-black text-white text-sm font-black px-5 py-3 border-2 border-black rounded-xl">Apply</button>
+              <button onClick={handleApplyPromo} className="bg-black text-white text-xs font-black px-4 py-2 border-2 border-black rounded-xl">Apply</button>
             </div>
-            {discountApplied && <p className="text-sm font-black text-green-600">🎉 "CAMPUS10" applied! Save 10% off items</p>}
+            {discountApplied && <p className="text-xs font-black text-green-600">🎉 "CAMPUS10" applied! Save 10% off items</p>}
           </div>
 
           {/* Financial Breakdown Table lines */}
@@ -148,11 +148,11 @@ export default function CartStep({
               </div>
             )}
             <div className="flex justify-between">
-              <span className="text-zinc-700">Fulfillment Fee:</span>
+              <span className="text-zinc-500">Fulfillment Fee:</span>
               <span className="font-mono">{totals.logisticsFee === 0 ? 'FREE' : `$${totals.logisticsFee.toFixed(2)}`}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-zinc-700">Direct Creator Support:</span>
+              <span className="text-zinc-500">Direct Creator Support:</span>
               <span className="font-mono">${Number(supportTip).toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-xl font-black uppercase border-t-4 border-black pt-4">

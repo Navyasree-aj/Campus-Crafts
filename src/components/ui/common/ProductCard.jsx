@@ -23,13 +23,13 @@ export default function ProductCard({ item, onClick }) {
       
       <div className="p-4 flex flex-col flex-1 justify-between">
         <div>
-          <h3 className="font-bold text-sm md:text-base text-black leading-tight mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
+          <h3 className="font-bold text-lg md:text-2xl text-black leading-tight mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
             {item.title}
           </h3>
           <div className="text-sm md:text-base mb-3">{'⭐'.repeat(item.rating || 5)}</div>
         </div>
         <div className="flex items-center justify-between mt-3">
-          <span className="font-black text-lg md:text-xl">${item.price}</span>
+          <span className="font-black text-lg md:text-3xl">${item.price}</span>
           {/* Prevent card click event when hitting quick checkout button */}
           <button 
             onClick={(e) => { e.stopPropagation(); alert('Added to bag!'); }}

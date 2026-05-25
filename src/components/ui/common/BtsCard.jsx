@@ -10,9 +10,9 @@ export default function BtsCard({ clip }) {
           ▶
         </div>
         <div>
-          <span className="font-black text-sm text-emerald-300 block mb-1">{clip.handle}</span>
-          <p className="text-xs text-white/90 font-medium leading-tight mb-2">{clip.activity}</p>
-          <span className="text-[10px] font-bold text-zinc-400 block">👁️ {clip.views} views</span>
+          <span className="font-black text-lg text-emerald-300 block mb-1">{clip.handle}</span>
+          <p className="text-lg text-white/90 font-medium leading-tight mb-2">{clip.activity}</p>
+          <span className="text-lg font-bold text-zinc-400 block">👁️ {clip.views} views</span>
         </div>
       </div>
     </div>

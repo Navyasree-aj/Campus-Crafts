@@ -5,8 +5,8 @@ import ProductCard from '../../components/ui/common/ProductCard';
 export default function TrendingProducts({ onProductSelect }) {
   return (
     <section className="px-4 py-8 w-full">
-      <div className="mx-auto max-w-[1600px]">
-        <h2 className="text-2xl md:text-3xl font-black text-black mb-6">🔥 Trending Products</h2>
+      <div className="mx-auto max-w-full">
+        <h2 className="text-2xl md:text-4xl font-black text-black mb-6">🔥 Trending Products</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {mockTrending.map(item => (
             <ProductCard 
