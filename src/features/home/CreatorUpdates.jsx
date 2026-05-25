@@ -3,7 +3,6 @@ import React from 'react';
 export default function CreatorUpdates() {
   return (
     <section className="px-4 py-8 max-w-7xl mx-auto">
-      <h2 className="text-2xl md:text-3xl font-black text-black mb-6">📣 Followed Creator Updates</h2>
       <div className="max-w-2xl bg-white border-4 border-black p-5 rounded-2xl shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]">
         <div className="flex items-center gap-3 mb-3">
           <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Avatar" className="w-10 h-10 rounded-full border border-black object-cover" />

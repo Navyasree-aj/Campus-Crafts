@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BottomNavigation() {
+export default function BottomNavigation({ activeTab, onTabChange }) {
   return (
     <div className="fixed bottom-6 left-0 right-0 z-50 px-8 pointer-events-none">
       {/* Heavy desktop dashboard panel bar */}
@@ -8,11 +8,11 @@ export default function BottomNavigation() {
         
         {/* Browse Categories */}
         <button 
-          onClick={() => alert('Routing to Categories Grid Page...')}
+          onClick={() => onTabChange?.('browse')}
           className="flex flex-col items-center justify-center flex-1 py-3 text-black group hover:bg-zinc-100 rounded-xl transition-colors"
         >
           <span className="text-3xl group-hover:scale-110 transition-transform">🗂️</span>
-          <span className="text-xs lg:text-sm font-black uppercase tracking-wider mt-2">Browse Categories</span>
+          <span className="text-xs lg:text-sm font-black uppercase tracking-wider mt-2">Browse Products</span>
         </button>
 
         {/* Live Creator Feed */}
