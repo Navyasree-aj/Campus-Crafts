@@ -18,56 +18,76 @@ export default function ProductDetailsPage({ product, onBackToHome }) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 space-y-12 animate-fadeIn">
+    /* Aligned structural container boundaries from max-w-7xl down to standard max-w-6xl proportions */
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 space-y-6 animate-fadeIn text-black">
 
+      {/* Return Navigation Anchor Button - Calibrated down to text-xs with tight padding controls */}
       <button 
+        type="button"
         onClick={onBackToHome}
-        className="inline-flex items-center gap-3 text-base md:text-lg font-black bg-white border-2 border-black px-5 py-3 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-none transition-all"
+        className="inline-flex items-center gap-2 text-xs font-black bg-white border-2 border-black px-4 py-2 rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-none transition-all uppercase tracking-wide cursor-pointer"
       >
-        ⬅ Back to Campus Feed
+        ⬅ Back to Feed
       </button>
 
-      <div className="flex flex-wrap gap-4 items-center">
-        <span className="bg-amber-100 border border-black text-sm md:text-base font-black px-4 py-2 rounded-full uppercase tracking-wider">
+      {/* Tag Metadata Row - Sized down discovery labels */}
+      <div className="flex flex-wrap gap-2 items-center">
+        <span className="bg-amber-100 border-2 border-black text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wide">
           🔥 Active Discovery
         </span>
         {displayProduct.tags.map(t => (
-          <span key={t} className="text-base md:text-lg font-bold text-zinc-600 hover:underline cursor-pointer">{t}</span>
+          <span key={t} className="text-xs font-black text-zinc-500 hover:text-black hover:underline cursor-pointer transition-colors">
+            #{t}
+          </span>
         ))}
       </div>
 
-      <div className="space-y-10">
-        <ImageGallery images={displayProduct.images} />
-
-        <PurchaseAction product={displayProduct} />
-
-        <CreatorProfile creator={displayProduct.creator} />
-
-        <LocalCommerce info={displayProduct.localInfo} />
-
-        <div className="bg-white border-2 border-black p-8 md:p-10 rounded-3xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-          <h3 className="font-black text-2xl md:text-3xl uppercase tracking-wider text-black mb-5">The Slow-Made Backstory</h3>
-          <p className="text-base md:text-lg font-medium text-zinc-800 leading-relaxed mb-6">
-            {displayProduct.description}
-          </p>
-          <div className="bg-zinc-50 border-l-4 border-black p-5 rounded-r-2xl italic text-base text-zinc-600 font-medium">
-            "{displayProduct.story}"
-          </div>
+      {/* Split-Layout Matrix Container */}
+      {/* Converted simple block stack into an efficient 12-column layout grid on desktop */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        {/* LEFT STREAM COLUMN: Product Visuals Presentation Frame (5 Columns) */}
+        <div className="lg:col-span-5 space-y-4">
+          <ImageGallery images={displayProduct.images} />
         </div>
 
-        <TrustSocial reviews={displayProduct.reviews} btsVideo={displayProduct.btsVideo} />
-
-        <div className="bg-amber-100 p-5 rounded-3xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <strong className="text-sm md:text-base font-black block text-black">Want different colorways?</strong>
-              <span className="text-sm font-medium text-zinc-700">Request bespoke variants from creator.</span>
+        {/* RIGHT STREAM COLUMN: Commercial Engines, Profiles, & Logistics (7 Columns) */}
+        <div className="lg:col-span-7 space-y-5">
+          <PurchaseAction product={displayProduct} />
+          <CreatorProfile creator={displayProduct.creator} />
+          <LocalCommerce info={displayProduct.localInfo} />
+          
+          {/* Product Backstory Card - Adjusted text-3xl to clear text-base / text-sm bounds */}
+          <div className="bg-white border-4 border-black p-5 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
+            <h3 className="font-black text-base uppercase tracking-tight text-black">The Slow-Made Backstory</h3>
+            <p className="text-xs font-bold text-zinc-700 leading-relaxed">
+              {displayProduct.description}
+            </p>
+            <div className="bg-zinc-50 border-l-4 border-black p-3.5 rounded-r-xl italic text-xs text-zinc-600 font-bold leading-normal">
+              "{displayProduct.story}"
             </div>
-            <button className="bg-white border-2 border-black text-black font-black text-sm px-4 py-2 rounded-2xl">
-              Custom Request
-            </button>
           </div>
+
+          <TrustSocial reviews={displayProduct.reviews} btsVideo={displayProduct.btsVideo} />
+
+          {/* Bespoke Creator Commission Module */}
+          <div className="bg-amber-100 p-4 rounded-2xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <strong className="text-xs font-black block text-black uppercase tracking-tight">Want different colorways?</strong>
+                <span className="text-xs font-bold text-zinc-700">Request bespoke variants directly from the creator.</span>
+              </div>
+              <button 
+                type="button"
+                className="bg-white hover:bg-zinc-50 text-black border-2 border-black font-black text-xs uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+              >
+                Custom Request
+              </button>
+            </div>
+          </div>
+
         </div>
+
       </div>
     </div>
   );

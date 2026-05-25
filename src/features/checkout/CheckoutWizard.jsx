@@ -55,25 +55,30 @@ export default function CheckoutWizard() {
   };
 
   return (
-    <div className="w-full bg-[#FFFDF9] min-h-screen">
+    <div className="w-full bg-[#FFFDF9] min-h-screen text-black">
       {/* Structural Wizard Progress Tracker */}
-      <div className="w-full border-b-4 border-black bg-white py-10 px-12 sticky top-[88px] z-20">
-        <div className="max-w-[1600px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-5">
-          <div className="flex flex-wrap items-center gap-4 font-black uppercase text-lg md:text-xl">
-            <span className={`px-5 py-3 border-2 border-black rounded-xl ${step === 'cart' ? 'bg-purple-600 text-white' : 'bg-zinc-150'}`}>1. Review Bag</span>
-            <span className="text-zinc-600">➔</span>
-            <span className={`px-5 py-3 border-2 border-black rounded-xl ${step === 'checkout' ? 'bg-purple-600 text-white' : 'bg-zinc-150'}`}>2. Secure Checkout</span>
-            <span className="text-zinc-600">➔</span>
-            <span className={`px-5 py-3 border-2 border-black rounded-xl ${step === 'success' ? 'bg-green-500 text-white' : 'bg-zinc-150'}`}>3. Meetup Set</span>
+      {/* Brought padding down from py-10 px-12 to tight responsive spaces */}
+      <div className="w-full border-b-4 border-black bg-white py-4 px-4 md:px-6 sticky top-0 z-20">
+        {/* Brought container width constraint down from max-w-[1600px] to max-w-6xl for optimal desktop presentation */}
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Scaled navigation buttons down from text-lg/px-5/py-3 to compact text-xs/px-3/py-1.5 updates */}
+          <div className="flex flex-wrap items-center gap-2 font-black uppercase text-xs md:text-sm">
+            <span className={`px-3 py-1.5 border-2 border-black rounded-lg transition-colors ${step === 'cart' ? 'bg-purple-600 text-white' : 'bg-zinc-100'}`}>1. Review Bag</span>
+            <span className="text-zinc-400 font-bold">➔</span>
+            <span className={`px-3 py-1.5 border-2 border-black rounded-lg transition-colors ${step === 'checkout' ? 'bg-purple-600 text-white' : 'bg-zinc-100'}`}>2. Secure Checkout</span>
+            <span className="text-zinc-400 font-bold">➔</span>
+            <span className={`px-3 py-1.5 border-2 border-black rounded-lg transition-colors ${step === 'success' ? 'bg-green-500 text-white' : 'bg-zinc-100'}`}>3. Meetup Set</span>
           </div>
-          <div className="hidden sm:block font-mono font-black text-2xl bg-yellow-300 px-6 py-3 border-2 border-black rounded-xl shadow-[2px_2px_0_0_rgba(0,0,0,1)]">
+          {/* Scaled pricing banner badge down to a cleaner proportional footprint */}
+          <div className="font-mono font-black text-sm md:text-base bg-yellow-300 px-4 py-2 border-2 border-black rounded-lg shadow-[2px_2px_0_0_rgba(0,0,0,1)]">
             Est. Total: ${finalTotal.toFixed(2)}
           </div>
         </div>
       </div>
 
       {/* Render Steps Matrix Contextually */}
-      <div className="max-w-[1600px] mx-auto px-12 py-20">
+      {/* Balanced workspace width limits and internal layout frame spacing sizes */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
         {step === 'cart' && (
           <CartStep
             cart={cart}

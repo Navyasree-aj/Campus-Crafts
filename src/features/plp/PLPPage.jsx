@@ -41,17 +41,20 @@ export default function PLPPage() {
   }, [searchQuery, selectedCategory, selectedAesthetic, maxPrice, maxDistance, sortBy]);
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col min-h-screen bg-[#FFFDF9] text-black">
       {/* Main Sticky Header */}
       <PLPHeader searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
       {/* Horizontal Categories Strip */}
-      <section className="w-full bg-[#FFFDF9] border-b-4 border-black py-5 px-6 lg:px-12">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="flex items-center overflow-x-auto gap-4 no-scrollbar py-2">
+      {/* Tightened vertical padding down from py-5 to py-2.5 and normalized layout wrapper */}
+      <section className="w-full bg-[#FFFDF9] border-b-4 border-black py-2.5 px-4 md:px-6">
+        <div className="max-w-6xl mx-auto">
+          {/* Compressed layout components down from px-6 py-3 to px-3 py-1.5 */}
+          <div className="flex items-center overflow-x-auto gap-2 no-scrollbar py-1">
             <button
+              type="button"
               onClick={() => setSelectedCategory(null)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-2xl border-2 border-black font-black text-sm whitespace-nowrap tracking-tight transition-all shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 border-black font-black text-xs whitespace-nowrap tracking-tight transition-all shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer ${
                 selectedCategory === null ? 'bg-purple-600 text-white' : 'bg-white text-black hover:bg-zinc-50'
               }`}
             >
@@ -59,13 +62,14 @@ export default function PLPPage() {
             </button>
             {mockCategories.map((cat) => (
               <button
+                type="button"
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.name)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-2xl border-2 border-black font-black text-sm whitespace-nowrap tracking-tight transition-all shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-2 border-black font-black text-xs whitespace-nowrap tracking-tight transition-all shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none cursor-pointer ${
                   selectedCategory === cat.name ? 'bg-purple-600 text-white' : 'bg-white text-black hover:bg-zinc-50'
                 }`}
               >
-                <span className="text-base">{cat.icon}</span>
+                <span className="text-xs">{cat.icon}</span>
                 <span>{cat.name}</span>
               </button>
             ))}
@@ -74,10 +78,11 @@ export default function PLPPage() {
       </section>
 
       {/* Interactive Desktop Split Workspace Grid */}
-      <div className="w-full max-w-[1600px] mx-auto px-6 lg:px-12 py-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      {/* Normalized structure width bounds from max-w-[1600px] to max-w-6xl, compressed gaps to gap-5 */}
+      <div className="w-full max-w-6xl mx-auto px-4 md:px-6 py-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start flex-1">
         
         {/* Sidebar Filtering Block Panel (Spans 3 Columns on Desktop) */}
-        <aside className="w-full lg:col-span-3 lg:sticky lg:top-36 z-20">
+        <aside className="w-full lg:col-span-3 lg:sticky lg:top-20 z-20">
           <FilterSidebar
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
@@ -92,29 +97,32 @@ export default function PLPPage() {
         </aside>
 
         {/* Primary Listing Presentation Feed (Spans 9 Columns on Desktop) */}
-        <main className="w-full lg:col-span-9 space-y-8">
+        {/* Swapped deep grid spaces from space-y-8 down to space-y-4 */}
+        <main className="w-full lg:col-span-9 space-y-4">
           
           {/* Query Feed Header Metric Strip */}
-          <div className="w-full bg-yellow-100 border-4 border-black p-5 rounded-2xl shadow-[6px_6px_0_0_rgba(0,0,0,1)] flex flex-wrap items-center justify-between gap-4">
-            <h2 className="text-xl lg:text-2xl font-black uppercase tracking-tight">
-              ⚡Catalog: <span className="text-purple-600 font-mono">{filteredProducts.length}</span> items found
+          {/* Trimmed down structural padding to p-3 and scaled main text tracker down to text-xs */}
+          <div className="w-full bg-yellow-100 border-4 border-black p-3 rounded-xl shadow-[3px_3px_0_0_rgba(0,0,0,1)] flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-xs font-black uppercase tracking-wider">
+              ⚡ Catalog: <span className="text-purple-600 font-mono text-sm">{filteredProducts.length}</span> items found
             </h2>
             {selectedCategory && (
-              <span className="bg-black text-white text-xs font-black px-4 py-1.5 rounded-xl uppercase tracking-wider">
-                Active Category: {selectedCategory}
+              <span className="bg-black text-white text-[9px] font-black px-2 py-1 rounded-lg uppercase tracking-wider">
+                Active: {selectedCategory}
               </span>
             )}
           </div>
 
           {/* Conditional Rendering Fallback Interface */}
           {filteredProducts.length === 0 ? (
-            <div className="w-full bg-white border-4 border-black p-16 rounded-[32px] shadow-[8px_8px_0_0_rgba(0,0,0,1)] text-center space-y-4">
-              <span className="text-6xl block">🔍</span>
-              <h3 className="text-3xl font-black uppercase tracking-tight">No Creative Drops Match</h3>
-              <p className="text-zinc-600 font-bold text-lg max-w-md mx-auto">
-                No matching items were found within your current radius constraints. Try resetting your active aesthetic filter tags.
+            <div className="w-full bg-white border-4 border-black p-8 rounded-2xl shadow-[4px_4px_0_0_rgba(0,0,0,1)] text-center space-y-3">
+              <span className="text-4xl block">🔍</span>
+              <h3 className="text-sm font-black uppercase tracking-wider">No Creative Drops Match</h3>
+              <p className="text-zinc-500 font-bold text-xs max-w-xs mx-auto leading-normal">
+                No matching items were found within your current radius constraints. Try resetting your active filters.
               </p>
               <button
+                type="button"
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedCategory(null);
@@ -122,14 +130,15 @@ export default function PLPPage() {
                   setMaxPrice(150);
                   setMaxDistance(5);
                 }}
-                className="bg-black text-white font-black text-sm px-6 py-3 border-2 border-black rounded-xl shadow-[4px_4px_0_0_rgba(0,0,0,1)]"
+                className="bg-black hover:bg-zinc-800 text-white font-black text-xs px-4 py-2 border-2 border-black rounded-lg shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
               >
                 Reset Search Filters
               </button>
             </div>
           ) : (
             /* Responsive Product Storefront Grid Layout */
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+            /* Compressed layout grid row spaces down from gap-8 to gap-4 */
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

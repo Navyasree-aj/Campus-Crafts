@@ -2,45 +2,49 @@ import React from 'react';
 
 export default function Navigation({ user, onTriggerLogin, onLogOut }) {
   return (
-    <nav className="sticky top-0 z-40 bg-[#FFFDF9] border-b-4 border-black px-8 py-10 shadow-[0_6px_0_0_rgba(0,0,0,1)]">
-      <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-12">
+    /* Calibrated structural padding down from py-10 to py-3.5 and compressed shadow metrics */
+    <nav className="sticky top-0 z-40 bg-[#FFFDF9] border-b-4 border-black px-4 md:px-6 py-3.5 shadow-[0_4px_0_0_rgba(0,0,0,1)]">
+      {/* Aligned container layout from max-w-[1600px] to max-w-6xl for synchronized alignment */}
+      <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
         
-        {/* COLUMN 1: Massive Brand Logo (Anchored to the Left End) */}
-        <a href="/" className="text-3xl lg:text-6xl font-black tracking-tighter uppercase hover:text-purple-600 transition-colors flex-shrink-0">
+        {/* COLUMN 1: Brand Logo - Scaled down from lg:text-6xl to clear text-lg md:text-xl dimensions */}
+        <a href="/" className="text-lg md:text-xl font-black tracking-tighter uppercase hover:text-purple-600 transition-colors flex-shrink-0 text-black">
           campus-crafts
         </a>
 
-        {/* COLUMN 2: Large, Readable Search Bar (Centered in the Middle) */}
-        <div className="flex-1 max-w-3xl relative mx-auto">
+        {/* COLUMN 2: Search Bar - Sized input frame from p-4 text-lg down to high-density text-xs bounds */}
+        <div className="flex-1 max-w-md relative mx-auto hidden sm:block">
           <input 
             type="text" 
-            placeholder="Search dorm drops, creators, aesthetics..." 
-            className="w-full bg-white border-4 border-black font-bold text-lg px-6 py-4 rounded-2xl outline-none focus:shadow-[4px_4px_0_0_rgba(0,0,0,1)] transition-all placeholder-zinc-400"
+            placeholder="Search drops, creators, aesthetics..." 
+            className="w-full bg-white border-2 border-black font-bold text-xs px-4 py-2 rounded-xl outline-none focus:shadow-[2px_2px_0_0_rgba(0,0,0,1)] transition-all placeholder-zinc-400 text-black"
           />
         </div>
 
-        {/* COLUMN 3: Large Authentication Button (Anchored to the Right End) */}
-        <div className="flex items-center gap-4 flex-shrink-0">
+        {/* COLUMN 3: Authentication Actions - Adjusted button padding fields from px-8 py-4 to clean standard dimensions */}
+        <div className="flex items-center gap-2 flex-shrink-0">
           {user?.isAuthenticated ? (
-            /* STATE A: User session is active - display their campus hub and a functional Sign Out action button */
-            <div className="flex items-center gap-4">
-              <span className="hidden md:inline-block bg-purple-50 text-purple-700 font-mono font-black text-base px-5 py-3.5 border-4 border-purple-600 rounded-2xl">
+            /* STATE A: User session is active */
+            <div className="flex items-center gap-2">
+              <span className="hidden md:inline-block bg-purple-50 text-purple-700 font-mono font-black text-xs px-3 py-1.5 border-2 border-purple-600 rounded-xl">
                 🎓 {user?.campusHub?.split(' ')[0] || 'Campus'} Hub
               </span>
               <button 
+                type="button"
                 onClick={onLogOut}
-                className="bg-white border-4 border-black hover:bg-red-50 text-red-600 font-black text-lg px-8 py-4 rounded-2xl active:translate-y-[2px] transition-all shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:shadow-none cursor-pointer"
+                className="bg-white border-2 border-black hover:bg-red-50 text-red-600 font-black text-xs uppercase px-4 py-1.5 rounded-xl active:translate-y-[1px] transition-all shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:shadow-none cursor-pointer"
               >
                 Sign Out
               </button>
             </div>
           ) : (
-            /* STATE B: User is unauthenticated - assign the login page trigger to the click handler */
+            /* STATE B: User is unauthenticated */
             <button 
+              type="button"
               onClick={onTriggerLogin}
-              className="bg-black text-white font-black text-lg px-8 py-4 rounded-2xl border-4 border-black hover:bg-purple-600 active:translate-y-[2px] transition-all shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:shadow-none cursor-pointer"
+              className="bg-black text-white font-black text-xs uppercase px-4 py-1.5 rounded-xl border-2 border-black hover:bg-purple-600 active:translate-y-[1px] transition-all shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:shadow-none cursor-pointer"
             >
-              Sign In / Login
+              Sign In
             </button>
           )}
         </div>

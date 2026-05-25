@@ -4,36 +4,51 @@ export default function ProductCard({ item, onClick }) {
   return (
     <div 
       onClick={onClick}
-      className="min-w-[260px] bg-white border-2 border-black rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col cursor-pointer hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 group"
+      /* Tightened min-width boundary and matched the dense 4px border style of sibling modules */
+      className="min-w-[180px] bg-white border-4 border-black rounded-xl overflow-hidden shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] flex flex-col cursor-pointer hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-150 group text-black"
     >
-      <div className="relative h-44 md:h-56 bg-zinc-50 overflow-hidden">
-        <img 
-          src={item.img} 
-          alt={item.title} 
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" 
-        />
-        {/* Prevent card click event from firing when just liking an item */}
+      {/* Compressed vertical image housing frame down from h-44/56 to a crisp h-32 track */}
+      <div className="relative h-32 bg-zinc-50 overflow-hidden border-b-2 border-black">
+        {item?.img && (
+          <img 
+            src={item.img} 
+            alt={item.title} 
+            className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-200" 
+          />
+        )}
+        
+        {/* Wishlist Button Toggle Node */}
+        {/* Adjusted padding from w-8 h-8 to a compact w-6 h-6 framework */}
         <button 
+          type="button"
           onClick={(e) => { e.stopPropagation(); alert('Saved to Wishlist!'); }} 
-          className="absolute top-3 right-3 bg-white border border-black w-8 h-8 rounded-full text-sm font-black flex items-center justify-center shadow-sm hover:bg-zinc-100"
+          className="absolute top-2 right-2 bg-white border-2 border-black w-6 h-6 rounded-md text-xs font-black flex items-center justify-center shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:bg-zinc-100 cursor-pointer"
         >
           ♥
         </button>
       </div>
       
-      <div className="p-4 flex flex-col flex-1 justify-between">
-        <div>
-          <h3 className="font-bold text-lg md:text-2xl text-black leading-tight mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors">
-            {item.title}
+      {/* Content & Metadata Layout Hub */}
+      {/* Sized standard grid block structural padding parameters down from p-4 to p-2.5 */}
+      <div className="p-2.5 flex flex-col flex-1 justify-between gap-2">
+        <div className="space-y-1">
+          {/* Calibrated title typography down from broad text-lg/2xl to clear, high-density text-xs rules */}
+          <h3 className="font-black text-xs text-black leading-tight line-clamp-2 group-hover:text-purple-600 transition-colors uppercase tracking-tight">
+            {item?.title}
           </h3>
-          <div className="text-sm md:text-base mb-3">{'⭐'.repeat(item.rating || 5)}</div>
+          <div className="text-[10px] tracking-tight">{'⭐'.repeat(item?.rating || 5)}</div>
         </div>
-        <div className="flex items-center justify-between mt-3">
-          <span className="font-black text-lg md:text-3xl">${item.price}</span>
-          {/* Prevent card click event when hitting quick checkout button */}
+        
+        {/* Action Transaction Row Split */}
+        <div className="flex items-center justify-between gap-1.5 pt-0.5">
+          <span className="font-black text-xs font-mono">${item?.price}</span>
+          
+          {/* Quick Add Bag Action Trigger */}
+          {/* Downsized CTA dimensions down from px-4 py-2 to a dense px-2.5 py-1 box */}
           <button 
+            type="button"
             onClick={(e) => { e.stopPropagation(); alert('Added to bag!'); }}
-            className="bg-mint text-black border border-black text-sm font-black px-4 py-2 rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            className="bg-emerald-300 hover:bg-emerald-400 text-black border-2 border-black text-[10px] font-black px-2.5 py-1 rounded-lg shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer uppercase tracking-wider"
           >
             Add +
           </button>
