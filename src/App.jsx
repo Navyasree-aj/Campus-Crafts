@@ -9,6 +9,7 @@ import BtsFeed from './features/home/BtsFeed';
 import BrowseCategories from './features/home/BrowseCategories';
 import TrendingProducts from './features/home/TrendingProducts';
 import NearbyCreators from './features/home/NearbyCreators';
+import CheckoutWizard from './features/checkout/CheckoutWizard';
 
 // Product Listing Page Module (View 2)
 import PLPPage from './features/plp/PLPPage';
@@ -39,7 +40,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF9] text-black antialiased pb-40">
+    <div className="min-h-screen bg-[#FFFDF9] text-black antialiased pb-40 lg:pb-0 lg:pl-36">
       
       {/* CONDITIONAL BAR RENDERING:
         The PLP page brings its own integrated search-driven top navigation system.
@@ -60,10 +61,10 @@ function App() {
         <>
           {/* TAB 1: BASE DEPLOYMENT HUB MAIN LANDING VIEW */}
           {currentTab === 'home' && (
-            <main className="w-full max-w-[1600px] mx-auto px-8 py-12 space-y-24">
+            <main className="w-full max-w-[1240px] mx-auto px-8 py-12 space-y-24">
               
               {/* Desktop-scale Notice Board Card */}
-              <div className="w-full bg-purple-50 border-4 border-black p-12 rounded-[32px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="w-full bg-purple-50 border-4 border-black p-12 rounded-[32px] shadow-[8px_8px_0px_0_rgba(0,0,0,1)]">
                 <h2 className="text-4xl lg:text-5xl font-black text-black mb-8 tracking-tight">
                   Followed Creator Updates
                 </h2>
@@ -98,9 +99,14 @@ function App() {
             <PLPPage />
           )}
 
-          {/* TABS 3 & 4: AUXILIARY SYSTEM PLATFORM PLACEHOLDERS */}
+          {/* TAB 3: SHOPPING CART / CHECKOUT FLOW */}
+          {currentTab === 'cart' && (
+            <CheckoutWizard />
+          )}
+
+          {/* TABS 4 & 5: AUXILIARY SYSTEM PLATFORM PLACEHOLDERS */}
           {(currentTab === 'wishlist' || currentTab === 'profile') && (
-            <main className="w-full max-w-[1600px] mx-auto px-8 py-24 flex flex-col items-center justify-center text-center">
+            <main className="w-full max-w-[1240px] mx-auto px-8 py-24 flex flex-col items-center justify-center text-center">
               <div className="bg-white border-4 border-black p-12 rounded-[32px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] max-w-xl">
                 <span className="text-6xl block mb-4">✨</span>
                 <h1 className="text-3xl font-black uppercase tracking-tight">{currentTab} Vault</h1>
