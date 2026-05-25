@@ -44,7 +44,7 @@ export default function Navigation({ user, onTriggerLogin, onLogOut }) {
               onClick={onTriggerLogin}
               className="bg-black text-white font-black text-xs uppercase px-4 py-1.5 rounded-xl border-2 border-black hover:bg-purple-600 active:translate-y-[1px] transition-all shadow-[2px_2px_0_0_rgba(0,0,0,1)] active:shadow-none cursor-pointer"
             >
-              Sign In
+              Login/Sign In
             </button>
           )}
         </div>

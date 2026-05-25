@@ -9,7 +9,7 @@ export default function PLPHeader({ searchQuery, onSearchChange }) {
         
         {/* App Title Identity */}
         {/* Scaled identity down from text-3xl/4xl to a compact, punchy text-sm md:text-base formatting */}
-        <a href="/" className="text-xl md:text-base font-black uppercase tracking-tighter hover:text-black-600 transition-colors flex-shrink-0">
+        <a href="/" className="text-lg md:text-xl font-black uppercase tracking-tighter hover:text-black-600 transition-colors flex-shrink-0">
           campus<span className="text-black-600">-crafts</span>
         </a>
 

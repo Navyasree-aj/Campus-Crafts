@@ -8,7 +8,7 @@ export default function AuthLeftHero() {
       <div className="space-y-2 z-10">
         <div>
           <a href="/" className="text-2xl lg:text-3xl font-black uppercase tracking-tighter hover:text-purple-600 transition-colors flex-shrink-0">
-            campus<span className="text-zinc-600">-crafts</span>
+            campus-crafts
           </a>
         </div>
         {/* Scaled text from text-lg to text-xs with proportional padding */}
